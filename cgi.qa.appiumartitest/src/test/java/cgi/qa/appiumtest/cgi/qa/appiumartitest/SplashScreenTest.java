@@ -29,7 +29,7 @@ public class SplashScreenTest extends TestBase {
 		SplashScreenPage ssc=new SplashScreenPage();
 		ssc.actionOnTextField();
 		ssc.actionOnProgressBar();
-		ssc.actionOnPopUpWindow();
+		//ssc.actionOnPopUpWindow();
 	}
 	
 	@AfterTest

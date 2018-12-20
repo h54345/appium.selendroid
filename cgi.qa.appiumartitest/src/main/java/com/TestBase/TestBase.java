@@ -25,7 +25,7 @@ public class TestBase {
 			prop = new Properties();
 
 			FileInputStream fis = new FileInputStream(
-					"C:\\Users\\hamza.naseem\\workspace\\FreeCRMTest\\src\\main\\java\\com\\lm\\qa\\config\\config.properties");
+					"C:\\Users\\Hamza\\git\\appium.selendroid\\cgi.qa.appiumartitest\\src\\main\\java\\configpage\\config.properties");
 
 			try {
 				prop.load(fis);
@@ -52,11 +52,11 @@ public void initialization() {
 		
 		
 		capa.setCapability("automationName", "Appium");
-		capa.setCapability("deviceName", "ZY223FT2F4");
+		capa.setCapability("deviceName", "ZY2233N2F8");
 		//capa.setCapability("", "ENUL6303030010"); //Give Device ID of your mobile phone
 		capa.setCapability("platformName", "Android");
 		capa.setCapability("platformVersion", "7.0");
-		capa.setCapability("app", "C:/Users/hamza.naseem/Desktop/Apk Files/selendroid-test-app.apk");
+		capa.setCapability("app", "D:\\apk\\selendroid-test-app-0.17.0.apk");
 		capa.setCapability("appPackage", "io.selendroid.testapp");
 		capa.setCapability("appActivity", "io.selendroid.testapp.HomeScreenActivity");
 		capa.setCapability("autoDismissAlerts", "true");
