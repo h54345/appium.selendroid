@@ -3,12 +3,14 @@ package cgi.qa.appiumtest.cgi.qa.appiumartitest;
 import java.io.IOException;
 
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.TestBase.TestBase;
 import com.pages.SplashScreenPage;
 
-public class SplashScreenTest extends TestBase {
+public class SplashScreenTest extends TestBase{
 	
 	
 	
@@ -17,24 +19,30 @@ public class SplashScreenTest extends TestBase {
 		super();
 	}
 	
-	@Test(priority=0)
-	public void startUp()
+	//@Parameters({"automationName","deviceName","platformVersion"})
+	@BeforeTest(alwaysRun = true)
+	
+	public void startUp() throws Exception
 	{
-	   initialization();
+	   initialization("Appium", "DRGID18092105974", "9");
+		
 	}
 
-	@Test(priority=1)
+	@Test()
 	public void appOpens() throws Exception, IOException
 	{
-		SplashScreenPage ssc=new SplashScreenPage();
-		ssc.actionOnTextField();
-		ssc.actionOnProgressBar();
+		SplashScreenPage ssc=new SplashScreenPage(getDriver());
+		ssc.actionOnTextField(getDriver());
+		ssc.actionOnProgressBar(getDriver());
 		//ssc.actionOnPopUpWindow();
 	}
 	
 	@AfterTest
 	public void tearDown()
 	{
-		driver.quit();
+		getDriver().quit();
 	}
+	
+	
+	
 }

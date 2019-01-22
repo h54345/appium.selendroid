@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"> 
-<suite guice-stage="DEVELOPMENT" name="Default suite"> 
-  <test verbose="2" name="Default test"> 
-    <classes> 
+<suite name="suite" parallel="tests" thread-count="2"> 
+  <!-- <test name="MotoXtest"> 
+      <parameter name="automationName" value="Appium"></parameter>
+      <parameter name="deviceName" value="ZY2233N2F8"></parameter>
+      <parameter name="platformVersion" value="7.0"></parameter>
+      <parameter name="appiumServer" value="http://0.0.0.0:4729/wd/hub"></parameter>
+      <parameter name="app" value="D:\\apk\\selendroid-test-app-0.17.0.apk"></parameter>
+   <classes> 
       <class name="cgi.qa.appiumtest.cgi.qa.appiumartitest.SplashScreenTest"/> 
     </classes> 
-  </test> <!-- Default test --> 
+ </test> -->
+  
+  <test name="Nokiatest"> 
+      <!-- <parameter name="automationName" value="Appium"></parameter>
+      <parameter name="deviceName" value="DRGID18092105974"></parameter>
+      <parameter name="platformVersion" value="9"></parameter>
+      <parameter name="appiumServer" value="http://127.0.0.1:4730/wd/hub"></parameter> -->
+      <!-- <parameter name="app" value="D:\\apk\\selendroid-test-app-0.17.0.apk"></parameter> -->
+    <classes> 
+      <class name="cgi.qa.appiumtest.cgi.qa.appiumartitest.SplashScreenTest"/> 
+    </classes>
+  </test>  
 </suite> <!-- Default suite -->

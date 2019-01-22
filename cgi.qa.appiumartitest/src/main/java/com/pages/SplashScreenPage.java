@@ -2,26 +2,24 @@ package com.pages;
 
 import java.io.IOException;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 //import org.openqa.selenium.By;
 //import org.openqa.selenium.interactions.Keyboard;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.TestBase.TestBase;
 import com.TestUtil.UtilityClass;
 
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.functions.ExpectedCondition;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class SplashScreenPage extends TestBase {
 	UtilityClass util=new UtilityClass();
-	
+    AndroidDriver<MobileElement> driver;
+    
 	@FindBy(id="io.selendroid.testapp:id/my_text_field")
 	MobileElement textField;
 	
@@ -31,33 +29,34 @@ public class SplashScreenPage extends TestBase {
 	@AndroidFindBy(id="io.selendroid.testapp:id/showPopupWindowButton")
 	MobileElement popwindowelement;
 	//*[@class='android.widget.Button']and 
-	public SplashScreenPage() {
+	public SplashScreenPage(AndroidDriver<MobileElement> d) {
 		// TODO Auto-generated constructor stub
-	    AppiumFieldDecorator afd= new AppiumFieldDecorator(driver);
-		PageFactory.initElements(afd, this );
+		this.driver=d;
+		AppiumFieldDecorator afd= new AppiumFieldDecorator(d);
+		PageFactory.initElements(afd, this);
 	}
 	
-	public void actionOnTextField() throws InterruptedException, IOException
+	public void actionOnTextField(AndroidDriver<MobileElement> d) throws InterruptedException, IOException
 	{
 		
 		
 		textField.sendKeys("Hello World!");
-		driver.hideKeyboard();
-		util.takeScreenShot("splashscreen");
+		d.hideKeyboard();
+		util.takeScreenShot(d,"splashscreen");
 		Thread.sleep(2000);
 	    				
 	}
 	
-	public void actionOnProgressBar() throws IOException, InterruptedException
+	public void actionOnProgressBar(AndroidDriver<MobileElement> d) throws IOException, InterruptedException
 	{
 		buttonprogressBar.click();
 		Thread.sleep(5000);
-		util.takeScreenShot("progressBar");
-		driver.hideKeyboard();
-		driver.navigate().back();;
+		util.takeScreenShot(driver,"progressBar");
+		d.hideKeyboard();
+		d.navigate().back();;
 		
 	}
-	public void actionOnPopUpWindow() throws IOException, InterruptedException
+	/*public void actionOnPopUpWindow() throws IOException, InterruptedException
 	{
 		popwindowelement.click();
 		Thread.sleep(3000);
@@ -68,5 +67,5 @@ public class SplashScreenPage extends TestBase {
 		alert.dismiss();
 		util.takeScreenShot("Afteraccepting");
 		
-	}
+	}*/
 }

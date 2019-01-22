@@ -1,25 +1,21 @@
 package com.TestUtil;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import com.TestBase.TestBase;
 
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+
 public class UtilityClass extends TestBase {
 	//static String testdata;
 	//static File src= new File("C:\\Users\\Hamza\\git\\the-internet.herokuapp.automation\\FreeCRMTest\\Testdata\\SpreadSheetData.xlsx");
-	public void takeScreenShot(String screename) throws IOException {
+	public void takeScreenShot(AndroidDriver<MobileElement> driver,String screename) throws IOException {
 		TakesScreenshot ts;
 		ts = (TakesScreenshot) driver;
 		File srcfile = ts.getScreenshotAs(OutputType.FILE);

@@ -3,21 +3,24 @@ package com.TestBase;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Parameters;
 
 //import com.lm.qa.utility.TestUtil;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 
-public class TestBase {
-	protected static AndroidDriver<MobileElement> driver;
+public class TestBase extends DriverClass {
+	
+	
 	protected static DesiredCapabilities capa;
-	protected static URL url;
+	//public static AndroidDriver<MobileElement> driver;
 	public static Properties prop;
 
 	public TestBase() {
@@ -39,32 +42,35 @@ public class TestBase {
 		}
 
 	}
-public void initialization() {
-
+	//@Parameters({"automationName","deviceName","platformVersion"})
+	public void initialization(String automationName, String deviceName, String platformVersion/*,String appiumServer*/) throws MalformedURLException
+	{
 		
-
 		capa = new DesiredCapabilities();
-		try {
-			url = new URL("http://127.0.0.1:4723/wd/hub");
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		
-		capa.setCapability("automationName", "Appium");
-		capa.setCapability("deviceName", "ZY2233N2F8");
+	
+		capa.setCapability("automationName", automationName);
+		capa.setCapability("deviceName", deviceName);
 		//capa.setCapability("", "ENUL6303030010"); //Give Device ID of your mobile phone
 		capa.setCapability("platformName", "Android");
-		capa.setCapability("platformVersion", "7.0");
-		capa.setCapability("app", "D:\\apk\\selendroid-test-app-0.17.0.apk");
+		capa.setCapability("platformVersion",platformVersion );
 		capa.setCapability("appPackage", "io.selendroid.testapp");
 		capa.setCapability("appActivity", "io.selendroid.testapp.HomeScreenActivity");
 		capa.setCapability("autoDismissAlerts", "true");
 		capa.setCapability("noReset", "true");
 		capa.setCapability("clearSystemFiles", "true");
+		//capa.setCapability("autoWebView", "true");
 		
-		driver = new AndroidDriver<MobileElement>(url, capa);
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		URL url=new URL("http://127.0.0.1:4723/wd/hub");
+		
+		
+        setDriver(new AndroidDriver<MobileElement>(url, capa));
+		
+		getDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		
+		
+		
+		
+	
 	}
 	
 }
